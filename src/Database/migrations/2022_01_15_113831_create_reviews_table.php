@@ -13,13 +13,20 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('reviews');
+
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->integer('resource_id');
-            $table->string('resource_type');
-            $table->integer('user_id');
+            $table->integer('reviewable_id');
+            $table->string('reviewable_type');
+            $table->integer('user_id')->nullable();
+            $table->string('email')->nullable();
+            $table->string('name');
+            $table->string('phone_number')->nullable();
             $table->text('review');
-            $table->integer('rating');
+            $table->integer('rating')->default(0);
+            $table->boolean('approved')->default(false);
+            $table->unique(['reviewable_id','reviewable_type','email','phone_number','user_id'],'unique_review');
             $table->softDeletes();
             $table->timestamps();
         });
