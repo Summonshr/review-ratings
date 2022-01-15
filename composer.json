@@ -1,0 +1,24 @@
+{
+    "name": "summonshr/review-ratings",
+    "autoload": {
+        "psr-4": {
+            "Summonshr\\ReviewRatings\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Suman Shrestha",
+            "email": "summonshr@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Summonshr\\ReviewRatings\\Providers\\ReviewServiceProvider"
+            ]
+        }
+    }
+}
