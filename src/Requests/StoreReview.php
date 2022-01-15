@@ -13,7 +13,17 @@ class StoreReview extends FormRequest
      */
     public function authorize()
     {
-        return (bool) request(config('reviews.route-key'));
+        if($resource = request(config('reviews.route-key'))) {
+            if($resource->reviews()
+            ->when($this->get('email'), fn ($query) => $query->where('email', $this->get('email')))
+            ->when($this->get('phone_number'), fn ($query) => $query->where('phone_number', $this->get('phone_number')))
+            ->when($this->get('review'), fn ($query) => $query->where('review', $this->get('review')))
+            ->count() > 0){
+                abort(409,'Review already exists');
+                return;
+            }
+        }
+        return true;
     }
 
     /**

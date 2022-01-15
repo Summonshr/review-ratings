@@ -13,6 +13,7 @@ class Review extends Model
         'email',
         'phone_number',
         'review',
+        'name',
         'rating',
     ];
 

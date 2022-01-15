@@ -14,9 +14,10 @@ class ReviewController
 
     public function index(ListReview $request, ReviewableModel $model)
     {
-        $reviews = $model->reviews()->get();
+        $reviews = $model->reviews()->latest()->get();
+        
         return [
-            'average'=> $reviews->avg('rating'),
+            'average'=> (float) number_format($reviews->avg('rating'),2),
             'total'=> $reviews->count(),
             'reviews' => $reviews->each->setHidden(['reviewed']),
         ];
