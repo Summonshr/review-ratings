@@ -1,5 +1,6 @@
 {
     "name": "summonshr/review-ratings",
+    "description": "A simple package to add review on any laravel model",
     "autoload": {
         "psr-4": {
             "Summonshr\\ReviewRatings\\": "src/"
