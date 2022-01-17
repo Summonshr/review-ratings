@@ -1,5 +1,7 @@
 # A simple package to add review and ratings onto existing laravel application
 
+Supports laravel 8 and greater only
+
 ```
 composer require summonshr/review-ratings
 ```
